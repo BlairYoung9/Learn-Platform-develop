@@ -7,7 +7,9 @@ const UserSchema = new mongoose.Schema({
         minlength: [2, "{PATH} must be 2 chars long"]
     },
     password:{
-        type: [String]
+        type: [String],
+        required: [true, "{PATH} must be present"],
+        minlength: [2, "{PATH} must be 2 chars long"]
     }
 }, {timestamps: true})
 
