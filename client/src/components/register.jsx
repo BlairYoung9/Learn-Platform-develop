@@ -12,7 +12,7 @@ const UserForm = (props) => {
     const createUser = (e) => {
         e.preventDefault();
         const newUser = { email,password};
-        axios.post("http://localhost:8000/api/Users",newUser)
+        axios.post("http://localhost:8000/api/users",newUser)
             .then(res =>{
                 console.log(res.data)
                 console.log("SUCCESS")
