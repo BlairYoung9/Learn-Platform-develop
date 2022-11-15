@@ -1,4 +1,5 @@
 import UserForm from './components/register';
+import Login from './components/login';
 import './App.css';
 import {Link, Switch, Route, BrowserRouter} from "react-router-dom"
 
@@ -9,7 +10,8 @@ function App() {
       <h1>Registration</h1>
       <Link to="/">Home</Link> 
       <hr/>
-      <UserForm/> 
+      <UserForm/>
+      <Login/> 
     </div>
     </BrowserRouter>
   );

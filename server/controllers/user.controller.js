@@ -15,30 +15,21 @@ module.exports = {
             .then(newUser => res.json(newUser))
             .catch(err => res.json({message: "error res", error : err}))
     },
-
-    //READ ONE
-    findOne: (req,res) => {
-        User.findById(req.params.id)
-            .then(user => res.json(user))
-            .catch(err => res.json({message: "error res", error : err}))
-    },
-
-    //UPDATE
-    update: (req,res) => {
-        User.findByIdAndUpdate(req.params.id, req.body, { 
-            new: true, runValidators: true
-        })
-            .then((updatedUser) => {
-                res.json(updatedUser)
-            })
-            .catch(err => res.json({message: "error res", error : err}))
-    },
-
-    //DELETE
-    delete: (req, res) => {
-        User.findByIdAndDelete(req.params.id)
-            .then(result => res.json(result))
-            .catch(err => res.json({message: "error res", error : err}))
+    login: async (req, res) => {
+        try{
+            const user = await User.findOne({email: req.body.email})
+            
+            if (user === null) {
+                // user not found in users collection
+                return res.status(400).json({ msg: 'Email does not exist' });
+            }
+                //compare passwords
+            if(req.body.password != user.password)
+                return res.status(400);
+        }
+        catch (err) {
+            console.error("loginerr",err.message);
+            res.status(500).send('Server error');
+        }
     }
-
 }
