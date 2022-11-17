@@ -24,8 +24,14 @@ module.exports = {
                 return res.status(400).json({ msg: 'Email does not exist' });
             }
                 //compare passwords
-            if(req.body.password != user.password)
-            return res.status(400).json({ msg: 'Password does not match' });
+            if(req.body.password != user.password){
+                return res.status(400).json({ msg: 'Password does not match' });
+            }
+            {
+            console.log("SUCCESS")
+            res.status(200).send({successfullLogin:true})
+            }
+                
         }
         catch (err) {
             console.error("loginerr",err.message);
