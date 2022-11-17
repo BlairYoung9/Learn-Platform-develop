@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useHistory } from "react-router-dom"
 
 
 const Login = ({setLoginUser}) => {
@@ -7,6 +8,7 @@ const Login = ({setLoginUser}) => {
     const [emailError, setEmailError] = useState("");
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
+    const history = useHistory();
 
     const handleSubmit =(e)=>{
         e.preventDefault();
@@ -14,7 +16,12 @@ const Login = ({setLoginUser}) => {
         axios.post("http://localhost:8000/login", user)
         .then(res => 
             {
-                setLoginUser(res.data.user)
+                if(res.data.successfullLogin){
+                    //console.log(res);
+                    //setLoginUser(res.data.user)
+                    console.log("SAD")
+                    history.push("/page")
+                }
             })
     }
 
@@ -39,6 +46,7 @@ const Login = ({setLoginUser}) => {
             setPasswordError("");
         }
     }
+
     return (
         <div className="App">
             <p>Login</p>
