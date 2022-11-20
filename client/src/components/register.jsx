@@ -7,7 +7,7 @@ const UserForm = (props) => {
     const [emailError, setEmailError] = useState("");
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
-    const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
+    // const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
 
     const createUser = (e) => {
         e.preventDefault();
@@ -22,13 +22,13 @@ const UserForm = (props) => {
             })
     };
 
-    const formMessage = () => {
-        if( hasBeenSubmitted ) {
-	    return "Thank you for submitting the form.";
-	} else {
-	    return "Welcome, please submit the form.";
-	}
-    };
+    // const formMessage = () => {
+    //     if( hasBeenSubmitted ) {
+	//     return "Thank you for submitting the form.";
+	// } else {
+	//     return "Welcome, please submit the form.";
+	// }
+    // };
 
     //Create Email
     const handleEmail= (e) => {
